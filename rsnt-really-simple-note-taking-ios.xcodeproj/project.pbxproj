@@ -20,6 +20,7 @@
 		4BDBF64E21F5B09600616E04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BDBF64C21F5B09600616E04 /* LaunchScreen.storyboard */; };
 		4BDBF65621F5B2EE00616E04 /* ReallySimpleNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBF65521F5B2EE00616E04 /* ReallySimpleNote.swift */; };
 		4BDBF65821F5B3A000616E04 /* ReallySimpleNoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBF65721F5B3A000616E04 /* ReallySimpleNoteStorage.swift */; };
+		BED9E3F723CFCFE4002692E5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9E3F623CFCFE4002692E5 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4BDBF64F21F5B09600616E04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BDBF65521F5B2EE00616E04 /* ReallySimpleNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReallySimpleNote.swift; sourceTree = "<group>"; };
 		4BDBF65721F5B3A000616E04 /* ReallySimpleNoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReallySimpleNoteStorage.swift; sourceTree = "<group>"; };
+		BED9E3F623CFCFE4002692E5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				4BDBF64C21F5B09600616E04 /* LaunchScreen.storyboard */,
 				4B8B981521F6409C0048122E /* ReallySimpleNoteUITableViewCell.swift */,
 				4BDBF64321F5B09400616E04 /* MasterViewController.swift */,
+				BED9E3F623CFCFE4002692E5 /* MapViewController.swift */,
 				4BDBF64521F5B09400616E04 /* DetailViewController.swift */,
 				4B7A016721F7041F00854E02 /* ReallySimpleNoteCreateChangeViewController.swift */,
 			);
@@ -199,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BED9E3F723CFCFE4002692E5 /* MapViewController.swift in Sources */,
 				4B3E583921FA1772001C8C76 /* ReallySimpleNotesData.xcdatamodeld in Sources */,
 				4BDBF65621F5B2EE00616E04 /* ReallySimpleNote.swift in Sources */,
 				4B8B981621F6409C0048122E /* ReallySimpleNoteUITableViewCell.swift in Sources */,

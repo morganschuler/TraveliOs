@@ -96,14 +96,23 @@
                     <view key="view" contentMode="scaleToFill" id="nQc-uT-YWa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q1U-ij-8pJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Q9t-Xd-8Nm"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="aOL-Tl-w38"/>
+                    <connections>
+                        <outlet property="mapView" destination="q1U-ij-8pJ" id="yki-gL-UYR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHo-Gz-hsJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-898" y="-1209"/>
+            <point key="canvasLocation" x="-898.39999999999998" y="-1210.344827586207"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="jBr-hq-Mew">

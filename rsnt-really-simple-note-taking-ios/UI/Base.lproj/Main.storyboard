@@ -104,6 +104,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q1U-ij-8pJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1C3-ZU-c9N" id="cCf-3Z-QZf"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -193,7 +196,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcf-CU-5cX">
-                                <rect key="frame" x="16" y="587" width="343" height="42"/>
+                                <rect key="frame" x="16" y="602" width="343" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="✓ OK"/>
                                 <connections>
@@ -203,6 +206,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S0B-ZK-SJ7">
                                 <rect key="frame" x="16" y="387" width="343" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="pJp-4i-4zG" id="7nX-hG-DMF"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -231,6 +237,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="aaJ-8E-kg5"/>
                     <connections>
+                        <outlet property="mapView" destination="S0B-ZK-SJ7" id="02e-rl-f1h"/>
                         <outlet property="noteDateLabel" destination="JXb-w8-Aje" id="4q7-Vo-x6n"/>
                         <outlet property="noteDoneButton" destination="lcf-CU-5cX" id="CNQ-iy-yx7"/>
                         <outlet property="noteTextTextView" destination="C0j-ww-jez" id="vUi-JD-P0U"/>

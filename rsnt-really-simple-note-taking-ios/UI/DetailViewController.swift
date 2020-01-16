@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import MapKit
 
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var noteTitleLabel: UILabel!
     @IBOutlet weak var noteTextTextView: UITextView!
     @IBOutlet weak var noteDate: UILabel!
+    @IBOutlet weak var noteMap: MKMapView!
     
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = detailItem {
             if let topicLabel = noteTitleLabel,
                let dateLabel = noteDate,
+                let _ = noteMap,
                let textView = noteTextTextView {
                 topicLabel.text = detail.noteTitle
                 dateLabel.text = ReallySimpleNoteDateHelper.convertDate(date: Date.init(seconds: detail.noteTimeStamp))

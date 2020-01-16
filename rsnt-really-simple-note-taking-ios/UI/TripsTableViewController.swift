@@ -89,13 +89,24 @@ class TripsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for:indexPath)
+        
         let country: Country
+        
         if isFiltering {
             country = filteredCountries[indexPath.row]
           } else {
             country = availableCountries[indexPath.row]
           }
-            cell.textLabel?.text = country.name
+            
+        cell.textLabel?.text = country.name
+        
+        if (self.favoriteArray.contains(country.name)) {
+            cell.layer.borderColor = UIColor.red.cgColor
+        } else {
+            cell.layer.borderWidth = 2.0
+            cell.layer.borderColor = UIColor.clear.cgColor
+        }
+        
           return cell
         }
         
@@ -145,76 +156,57 @@ class TripsViewController: UITableViewController {
       
       tableView.reloadData()
     }
+
     
     override func tableView(_ tableView: UITableView,
                       trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
        {
-        let cellName = self.availableCountries[indexPath.row].name
-//        if !favoriteArray.contains(cellName) {
-           // Write action code for the trash
+        let cellName = isFiltering
+            ? self.filteredCountries[indexPath.row].name
+            : self.availableCountries[indexPath.row].name
+
            var FavoriteAction = UIContextualAction(style: .normal, title:  "Favorite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-//               print("Update action ...")
-               success(true)
             
-//            let cellName = self.availableCountries[indexPath.row].name
+            success(true)
 
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil);
-
-                if !self.favoriteArray.contains(cellName) {
-               self.favoriteArray.append(cellName)
-                }
-            print(self.favoriteArray)
-
-            let cell = tableView.cellForRow(at: indexPath)
-            cell?.layer.borderWidth = 2.0
-            cell?.layer.borderColor = UIColor.red.cgColor
-            })
-                      FavoriteAction.backgroundColor = .green
+            if !self.favoriteArray.contains(cellName) {
+                self.favoriteArray.append(cellName)
+            }
+            tableView.reloadData()
+        })
         
-        
-            if self.favoriteArray.contains(cellName) {
+        FavoriteAction.backgroundColor = .green
+
+        if self.favoriteArray.contains(cellName) {
             FavoriteAction = UIContextualAction(style: .destructive, title:  "Remove", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            //               print("Update action ...")
-                           success(true)
+                    
+            success(true)
 
-//            let alertVC = UIAlertController(title: "Favorite Added!", preferredStyle: .alert)
-//            let otherVc = FavoritesViewController()
-//            if  !otherVc.favoriteArray2.contains(cellName) {
-//                otherVc.favoriteArray2.append(cellName)
-//            }
-//            otherVc.favoriteArray2
-//            print("other array:", otherVc.favoriteArray2)
-//            var defaults = UserDefaults.standardUserDefaults()
-//            defaults.setObject(favoriteArray, forKey: "YourKey")
-//            let alert = UIAlertController(title: "Country added to travel list!", message: "Go check out your favorited countries under the heart tab.", preferredStyle: .alert)
-//
-//            alert.addAction(UIAlertAction(title: "OK!", style: .default, handler: nil))
-//
-//            self.present(alert, animated: true)
-                let cell = tableView.cellForRow(at: indexPath)
-
-            //            let storyboard = UIStoryboard(name: "Main", bundle: nil);
-                        self.favoriteArray = self.favoriteArray.filter({ $0 != cellName })
-                        cell?.layer.borderWidth = 2.0
-                        cell?.layer.borderColor = UIColor.clear.cgColor
-           })
-           FavoriteAction.backgroundColor = .red
+            self.favoriteArray = self.favoriteArray.filter({ $0 != cellName })
+            tableView.reloadData()
+            
+            })
+            
+            FavoriteAction.backgroundColor = .red
         }
-        
+            
 
+//            let alert = UIAlertController(title: "Highlight removed!", message: nil, preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "OK!", style: .default, handler: nil))
+//            self.present(alert, animated: true)
+                
 
-           return UISwipeActionsConfiguration(actions: [FavoriteAction])
-       }
-//     func tableView(_ tableView: UITableView, didDeselectItemAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+        return UISwipeActionsConfiguration(actions: [FavoriteAction])
+    }
 }
-//
 
 
 extension TripsViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-    let searchBar = searchController.searchBar
-    filterContentForSearchText(searchBar.text!)
-  }
+  
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
 }
         
 

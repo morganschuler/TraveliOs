@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CoreLocation
 
 class ReallySimpleNoteCoreDataHelper {
     
@@ -41,6 +42,7 @@ class ReallySimpleNoteCoreDataHelper {
         newNoteToBeCreated.setValue(
             noteToBeCreated.noteTimeStamp,
             forKey: "noteTimeStamp")
+    
         
         do {
             try intoManagedObjectContext.save()
@@ -103,8 +105,9 @@ class ReallySimpleNoteCoreDataHelper {
                     noteId:        noteManagedObjectRead.value(forKey: "noteId")        as! UUID,
                     noteTitle:     noteManagedObjectRead.value(forKey: "noteTitle")     as! String,
                     noteText:      noteManagedObjectRead.value(forKey: "noteText")      as! String,
-                    noteTimeStamp: noteManagedObjectRead.value(forKey: "noteTimeStamp") as! Int64))
-            }
+                    noteTimeStamp: noteManagedObjectRead.value(forKey: "noteTimeStamp") as! Int64)
+                
+            )}
         } catch let error as NSError {
             // TODO error handling
             print("Could not read. \(error), \(error.userInfo)")
@@ -134,6 +137,7 @@ class ReallySimpleNoteCoreDataHelper {
                 noteTitle:     noteManagedObjectToBeRead.value(forKey: "noteTitle")     as! String,
                 noteText:      noteManagedObjectToBeRead.value(forKey: "noteText")      as! String,
                 noteTimeStamp: noteManagedObjectToBeRead.value(forKey: "noteTimeStamp") as! Int64)
+
         } catch let error as NSError {
             // TODO error handling
             print("Could not read. \(error), \(error.userInfo)")

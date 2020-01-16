@@ -12,7 +12,6 @@ import MapKit
 class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    
     @IBOutlet weak var noteTitleTextField: UITextField!
     @IBOutlet weak var noteTextTextView: UITextView!
     @IBOutlet weak var noteDoneButton: UIButton!
@@ -56,6 +55,7 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
             noteText:      noteTextTextView.text,
             noteTimeStamp: noteCreationTimeStamp)
 
+        
         ReallySimpleNoteStorage.storage.addNote(noteToBeAdded: note)
         
         performSegue(
@@ -72,8 +72,7 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
                     noteId:        changingReallySimpleNote.noteId,
                     noteTitle:     noteTitleTextField.text!,
                     noteText:      noteTextTextView.text,
-                    noteTimeStamp: noteCreationTimeStamp)
-            )
+                    noteTimeStamp: noteCreationTimeStamp))
             // navigate back to list of notes
             performSegue(
                 withIdentifier: "backToMasterView",
@@ -109,6 +108,7 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
             noteDateLabel.text = ReallySimpleNoteDateHelper.convertDate(date: Date.init(seconds: noteCreationTimeStamp))
             noteTextTextView.text = changingReallySimpleNote.noteText
             noteTitleTextField.text = changingReallySimpleNote.noteTitle
+//            mapView.annotations = (changingReallySimpleNote.noteMap)
             // enable done button by default
             noteDoneButton.isEnabled = true
         } else {
@@ -125,7 +125,25 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
         let backButton = UIBarButtonItem()
         backButton.title = "Back"
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+   
     }
+    
+    func addAnnotation(location: CLLocationCoordinate2D){
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275)
+            self.mapView.addAnnotation(annotation)
+    }
+    
+    @objc func longTap(sender: UIGestureRecognizer){
+           print("long tap")
+           if sender.state == .began {
+               let locationInView = sender.location(in: mapView)
+               let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
+               /// this is the location to .addAnnotation
+               addAnnotation(location: locationOnMap)
+           }
+        
+       }
 
     //Handle the text changes here
     func textViewDidChange(_ textView: UITextView) {
@@ -142,31 +160,8 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
         }
     }
 
-     @objc func longTap(sender: UIGestureRecognizer){
-            print("long tap")
-            if sender.state == .began {
-                let locationInView = sender.location(in: mapView)
-                let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
-                /// this is the location to .addAnnotation
-                addAnnotation(location: locationOnMap)
-            }
-        }
 
-        func addAnnotation(location: CLLocationCoordinate2D){
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = location
-    //            annotation.title = "Click to go to journal!"
-
-                self.mapView.addAnnotation(annotation)
-        }
-        
-//        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//                if segue.identifier == "segue1" {
-//    //                let JournalViewController = segue.destination as! JournalViewController
-//                    // TODO: something
-//                }
-//            }
-        
+    
     }
 
 

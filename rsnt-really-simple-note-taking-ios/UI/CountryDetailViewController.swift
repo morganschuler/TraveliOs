@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 
 class CountryDetailViewController: UIViewController {
@@ -16,6 +17,14 @@ class CountryDetailViewController: UIViewController {
     var demonym = ""
     var flag = ""
     
+    public var svgFlag: String = "" {
+        didSet {
+            DispatchQueue.main.async {
+                self.reloadsvgFlag()
+            }
+        }
+    }
+    
     @IBOutlet weak var nameLabel: UILabel!
     //    @IBOutlet weak var backButton: UINavigationItem!
     @IBOutlet weak var subregionLabel: UILabel!
@@ -24,6 +33,7 @@ class CountryDetailViewController: UIViewController {
     
     @IBOutlet weak var demonymLabel: UILabel!
     
+    @IBOutlet weak var imageWebView: WKWebView!
     //    @IBAction func favoriteButton(_ sender: Any) {
 //         let myVC = storyboard?.instantiateViewController(withIdentifier: "FavoriteTableViewController") as! FavoriteTableViewController
 //                myVC.favoriteCell = UITableViewCell()
@@ -54,11 +64,13 @@ class CountryDetailViewController: UIViewController {
         capitalLabel.text = "Capital:  \(capital)"
         subregionLabel.text = "Subregion: \(subregion)"
         demonymLabel.text = "Demonyn: \(demonym)"
-        
-     
+//        self.imageWebView.loadHTMLString("No flag available", baseURL: nil)
 
     }
     
+    func reloadsvgFlag() {
+        self.imageWebView.loadHTMLString("<div style='width:100%;height:100%;background-color:red;'>\(self.svgFlag)</div>", baseURL: nil)
+    }
 
 
 

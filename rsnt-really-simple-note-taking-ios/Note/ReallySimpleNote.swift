@@ -13,6 +13,7 @@ class ReallySimpleNote {
     private(set) var noteTitle     : String
     private(set) var noteText      : String
     private(set) var noteTimeStamp : Int64
+
     
     init(noteTitle:String, noteText:String, noteTimeStamp:Int64) {
         self.noteId        = UUID()

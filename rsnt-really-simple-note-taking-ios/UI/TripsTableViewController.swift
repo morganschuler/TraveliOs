@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import WebKit
 
 struct Country: Decodable {
     let name: String
     let capital: String
     let subregion: String
     let demonym: String
+    let flag: String
 }
  
 
@@ -109,20 +111,27 @@ class TripsViewController: UITableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "CountryDetailViewController") as! CountryDetailViewController
         
-        vc.nameLabel = UILabel()
+//        vc.nameLabel = UILabel()
         vc.name = availableCountry.name
         
-        vc.capitalLabel = UILabel()
+//        vc.capitalLabel = UILabel()
         vc.capital = availableCountry.capital
         
-        vc.subregionLabel = UILabel()
+//        vc.subregionLabel = UILabel()
         vc.subregion = availableCountry.subregion
         
-        vc.demonymLabel = UILabel()
+//        vc.demonymLabel = UILabel()
         vc.demonym = availableCountry.demonym
         
-//        vc.flagImage = UIImageView()
-//        vc.flagImage = availableCountry.flag
+        let urlString = URL(string: availableCountry.flag)!
+        let request = URLRequest(url: urlString)
+        let svgString = try? String(contentsOf: urlString)
+        print(availableCountry.flag)
+        print(svgString)
+        if svgString != nil {
+            vc.svgFlag = svgString!
+        }
+        
         
         self.navigationController!.pushViewController(vc, animated: true)
         
@@ -144,18 +153,19 @@ class TripsViewController: UITableViewController {
            let FavoriteAction = UIContextualAction(style: .normal, title:  "Favorite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
 //               print("Update action ...")
                success(true)
-
+            
             let cellName = self.availableCountries[indexPath.row].name
 
             let storyboard = UIStoryboard(name: "Main", bundle: nil);
-//            ftvc.countryLabel = UILabel()
-//            ftvc.country = cellName
+
                 if !self.favoriteArray.contains(cellName) {
                self.favoriteArray.append(cellName)
                 }
             print(self.favoriteArray)
 
-
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.layer.borderWidth = 2.0
+            cell?.layer.borderColor = UIColor.gray.cgColor
 
 
 //            let alertVC = UIAlertController(title: "Favorite Added!", preferredStyle: .alert)
@@ -167,14 +177,15 @@ class TripsViewController: UITableViewController {
 //            print("other array:", otherVc.favoriteArray2)
 //            var defaults = UserDefaults.standardUserDefaults()
 //            defaults.setObject(favoriteArray, forKey: "YourKey")
-            let alert = UIAlertController(title: "Country added to travel list!", message: "Go check out your favorited countries under the heart tab.", preferredStyle: .alert)
-
-            alert.addAction(UIAlertAction(title: "OK!", style: .default, handler: nil))
-
-            self.present(alert, animated: true)
+//            let alert = UIAlertController(title: "Country added to travel list!", message: "Go check out your favorited countries under the heart tab.", preferredStyle: .alert)
+//
+//            alert.addAction(UIAlertAction(title: "OK!", style: .default, handler: nil))
+//
+//            self.present(alert, animated: true)
 
            })
            FavoriteAction.backgroundColor = .green
+            
 //            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 //            let newViewController = storyBoard.instantiateViewController(withIdentifier: "FavoritesViewController") as! FavoritesViewController
 //            self.navigationController?.pushViewController(newViewController, animated: true)
@@ -183,11 +194,12 @@ class TripsViewController: UITableViewController {
 
            return UISwipeActionsConfiguration(actions: [FavoriteAction])
        }
-    
-
-        
+//     func tableView(_ tableView: UITableView, didDeselectItemAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+//
+//
+//}
+//
 }
-    
 
 extension TripsViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
@@ -196,4 +208,5 @@ extension TripsViewController: UISearchResultsUpdating {
   }
 }
         
+
 

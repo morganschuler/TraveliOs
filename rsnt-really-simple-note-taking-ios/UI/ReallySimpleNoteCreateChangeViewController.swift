@@ -147,6 +147,7 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
             if sender.state == .began {
                 let locationInView = sender.location(in: mapView)
                 let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
+                /// this is the location to .addAnnotation
                 addAnnotation(location: locationOnMap)
             }
         }
@@ -201,6 +202,8 @@ extension ReallySimpleNoteCreateChangeViewController : MKMapViewDelegate{
        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
                performSegue(withIdentifier: "segue1", sender: nil)
            }
+    
+    
 }
 
 

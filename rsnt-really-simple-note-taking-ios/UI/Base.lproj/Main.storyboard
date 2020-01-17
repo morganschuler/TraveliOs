@@ -28,23 +28,23 @@
             <objects>
                 <viewController title="Detail" id="JEX-9P-axG" customClass="DetailViewController" customModule="rsnt_really_simple_note_taking_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Title" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Uh-6m-Vox">
-                                <rect key="frame" x="20" y="76" width="335" height="36"/>
+                                <rect key="frame" x="20" y="64" width="335" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Note Text" translatesAutoresizingMaskIntoConstraints="NO" id="Zxg-qG-x94" userLabel="Note Text View">
-                                <rect key="frame" x="16" y="144" width="343" height="433"/>
+                                <rect key="frame" x="16" y="132" width="343" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkq-dP-66J">
-                                <rect key="frame" x="16" y="120" width="343" height="16"/>
+                                <rect key="frame" x="16" y="108" width="343" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,13 +57,6 @@
                                     <segue destination="pJp-4i-4zG" kind="show" identifier="showChangeNoteSegue" id="Qis-PK-fHa"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uFl-mz-87d">
-                                <rect key="frame" x="67" y="490" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="JEX-9P-axG" id="8U4-Jy-Smg"/>
-                                </connections>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -87,7 +80,6 @@
                     <navigationItem key="navigationItem" title="Entry Details" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="noteDate" destination="Nkq-dP-66J" id="rmc-TH-LRC"/>
-                        <outlet property="noteMap" destination="uFl-mz-87d" id="pO6-e7-8aB"/>
                         <outlet property="noteTextTextView" destination="Zxg-qG-x94" id="BD0-v6-tYL"/>
                         <outlet property="noteTitleLabel" destination="1Uh-6m-Vox" id="eUh-rm-ZU3"/>
                     </connections>
@@ -96,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="609" y="401"/>
         </scene>
-        <!--Item 2-->
+        <!--Map View Controller-->
         <scene sceneID="TV6-vz-2yF">
             <objects>
                 <viewController id="1C3-ZU-c9N" customClass="MapViewController" customModule="rsnt_really_simple_note_taking_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,10 +107,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Q9t-Xd-8Nm"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="aOL-Tl-w38"/>
+                    <tabBarItem key="tabBarItem" title="" image="pin" catalog="system" selectedImage="pin" id="aOL-Tl-w38"/>
+                    <navigationItem key="navigationItem" id="8Pu-JP-HW8"/>
                     <connections>
                         <outlet property="mapView" destination="q1U-ij-8pJ" id="yki-gL-UYR"/>
-                        <segue destination="vC3-pB-5Vb" kind="show" identifier="segue1" id="Zez-eV-Y5w"/>
+                        <segue destination="pJp-4i-4zG" kind="show" identifier="segue1" id="1um-fu-zMa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHo-Gz-hsJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -129,6 +122,7 @@
         <scene sceneID="amC-We-d9H">
             <objects>
                 <tabBarController id="Bam-xP-oXv" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="s32-qy-y57"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rlg-pQ-oin">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -136,19 +130,19 @@
                     </tabBar>
                     <connections>
                         <segue destination="1C3-ZU-c9N" kind="relationship" relationship="viewControllers" id="YdM-Ds-sZd"/>
-                        <segue destination="Lzh-I4-7MV" kind="relationship" relationship="viewControllers" id="kez-xo-CtI"/>
                         <segue destination="H1p-Uh-vWS" kind="relationship" relationship="viewControllers" id="ddI-dU-e3y"/>
+                        <segue destination="Lzh-I4-7MV" kind="relationship" relationship="viewControllers" id="kez-xo-CtI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38j-eO-hY3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2385" y="-1406"/>
         </scene>
-        <!--Item-->
+        <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
                 <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="kLe-Vj-AXe"/>
+                    <tabBarItem key="tabBarItem" title="" image="book" catalog="system" selectedImage="book" id="kLe-Vj-AXe"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="5Hg-Ir-8PA"/>
                     <connections>
@@ -208,13 +202,6 @@
                                     <action selector="doneButtonClicked:forEvent:" destination="pJp-4i-4zG" eventType="touchUpInside" id="dim-uj-OVT"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S0B-ZK-SJ7">
-                                <rect key="frame" x="16" y="387" width="343" height="174"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="pJp-4i-4zG" id="7nX-hG-DMF"/>
-                                </connections>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -242,24 +229,23 @@
                     </view>
                     <navigationItem key="navigationItem" id="aaJ-8E-kg5"/>
                     <connections>
-                        <outlet property="mapView" destination="S0B-ZK-SJ7" id="02e-rl-f1h"/>
                         <outlet property="noteDateLabel" destination="JXb-w8-Aje" id="4q7-Vo-x6n"/>
                         <outlet property="noteDoneButton" destination="lcf-CU-5cX" id="CNQ-iy-yx7"/>
                         <outlet property="noteTextTextView" destination="C0j-ww-jez" id="vUi-JD-P0U"/>
                         <outlet property="noteTitleTextField" destination="Ep7-Da-01O" id="9yh-dS-pOK"/>
-                        <segue destination="7bK-jq-Zjz" kind="show" identifier="backToMasterView" id="I9d-PT-S2W"/>
+                        <segue destination="Bam-xP-oXv" kind="presentation" identifier="backToMapView" modalPresentationStyle="fullScreen" id="lrG-U5-9m3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1o-9M-J8H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1356" y="424"/>
+            <point key="canvasLocation" x="1814" y="-1254"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
                 <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="rsnt_really_simple_note_taking_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -329,7 +315,7 @@
                 <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="E2h-uf-nme"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -340,11 +326,11 @@
             </objects>
             <point key="canvasLocation" x="-145" y="425"/>
         </scene>
-        <!--Item 1-->
+        <!--Navigation Controller-->
         <scene sceneID="54f-So-0VM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lzh-I4-7MV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="5V8-88-pRN"/>
+                    <tabBarItem key="tabBarItem" title="" image="globe" catalog="system" selectedImage="globe" id="5V8-88-pRN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Lr-1m-rVC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -417,8 +403,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kwo-Gu-gBk">
-                                <rect key="frame" x="68" y="169" width="240" height="128"/>
+                            <wkWebView contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kwo-Gu-gBk">
+                                <rect key="frame" x="66" y="169" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
@@ -444,9 +430,12 @@
             <point key="canvasLocation" x="732" y="-2125.1874062968518"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="book" catalog="system" width="64" height="50"/>
+        <image name="globe" catalog="system" width="64" height="60"/>
+        <image name="pin" catalog="system" width="58" height="64"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zez-eV-Y5w"/>
-        <segue reference="I9d-PT-S2W"/>
-        <segue reference="FDD-dR-pLh"/>
+        <segue reference="1um-fu-zMa"/>
     </inferredMetricsTieBreakers>
 </document>

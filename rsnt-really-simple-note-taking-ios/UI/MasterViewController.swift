@@ -2,8 +2,7 @@
 //  MasterViewController.swift
 //  rsnt-really-simple-note-taking-ios
 //
-//  Created by Németh László Harri on 2019. 01. 21..
-//  Copyright © 2019. Németh László Harri. All rights reserved.
+
 //
 
 import UIKit
@@ -14,7 +13,7 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.reloadData()
         // Core data initialization
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             // create alert

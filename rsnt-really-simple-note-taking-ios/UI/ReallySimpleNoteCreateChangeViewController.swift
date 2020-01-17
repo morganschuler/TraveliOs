@@ -2,8 +2,7 @@
 //  ReallySimpleNoteCreateChangeViewController.swift
 //  rsnt-really-simple-note-taking-ios
 //
-//  Created by Németh László Harri on 2019. 01. 22..
-//  Copyright © 2019. Németh László Harri. All rights reserved.
+
 //
 
 import UIKit
@@ -11,7 +10,6 @@ import MapKit
 
 class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewDelegate {
     
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var noteTitleTextField: UITextField!
     @IBOutlet weak var noteTextTextView: UITextView!
     @IBOutlet weak var noteDoneButton: UIButton!
@@ -58,8 +56,10 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
         
         ReallySimpleNoteStorage.storage.addNote(noteToBeAdded: note)
         
+//        self.dismiss(animated: true, completion: nil)
+
         performSegue(
-            withIdentifier: "backToMasterView",
+            withIdentifier: "backToMapView",
             sender: self)
     }
 
@@ -75,7 +75,7 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
                     noteTimeStamp: noteCreationTimeStamp))
             // navigate back to list of notes
             performSegue(
-                withIdentifier: "backToMasterView",
+                withIdentifier: "backToMapView",
                 sender: self)
         } else {
             // create alert
@@ -86,19 +86,21 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
             
             // add OK action
             alert.addAction(UIAlertAction(title: "OK",
-                                          style: .default ) { (_) in self.performSegue(
-                                              withIdentifier: "backToMasterView",
-                                              sender: self)})
+                                          style: .default )
+            { (_) in self.performSegue(
+                                              withIdentifier: "backToMapView",
+                                              sender: self)}
+            )
             // show alert
+
             self.present(alert, animated: true)
+//            self.dismiss(animated: true, completion: nil)
+
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
-               let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(longTap))
-               mapView.addGestureRecognizer(longTapGesture)
         // set text view delegate so that we can react on text change
         noteTextTextView.delegate = self
         
@@ -128,22 +130,7 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
    
     }
     
-    func addAnnotation(location: CLLocationCoordinate2D){
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275)
-            self.mapView.addAnnotation(annotation)
-    }
-    
-    @objc func longTap(sender: UIGestureRecognizer){
-           print("long tap")
-           if sender.state == .began {
-               let locationInView = sender.location(in: mapView)
-               let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
-               /// this is the location to .addAnnotation
-               addAnnotation(location: locationOnMap)
-           }
-        
-       }
+ 
 
     //Handle the text changes here
     func textViewDidChange(_ textView: UITextView) {
@@ -157,48 +144,11 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
             } else {
                 noteDoneButton.isEnabled = true
             }
+            
+            
         }
+    
+
     }
 
-
-    
-    }
-
-
-extension ReallySimpleNoteCreateChangeViewController : MKMapViewDelegate{
-
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            guard annotation is MKPointAnnotation else { print("no mkpointannotaions"); return nil }
-
-            let reuseId = "pin"
-            var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-
-            if pinView == nil {
-                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-                pinView!.canShowCallout = true
-    //            pinView!.rightCalloutAccessoryView = UIButton(type: .contactAdd)
-    //            pinView!.rightCalloutAccessoryView = UITextFieldDelegate
-                pinView!.pinTintColor = UIColor.red
-            }
-            else {
-                pinView!.annotation = annotation
-            }
-            return pinView
-        }
-
-        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-            if control == view.rightCalloutAccessoryView {
-                if ((view.annotation?.title!) != nil) {
-                   print("do something")
-                }
-            }
-        }
-        
-       func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-               performSegue(withIdentifier: "segue1", sender: nil)
-           }
-    
-    
 }
-
-

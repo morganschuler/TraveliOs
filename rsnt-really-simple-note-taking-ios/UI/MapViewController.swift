@@ -3,7 +3,6 @@
 //  rsnt-really-simple-note-taking-ios
 //
 //  Created by Morgan Schuler on 1/15/20.
-//  Copyright © 2020 Németh László Harri. All rights reserved.
 //
 //
 //import UIKit
@@ -64,8 +63,9 @@ class MapViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "segue1" {
-                let UINavigationController = segue.destination as! UINavigationController
+                let ReallySimpleNoteCreateChangeViewController = segue.destination as! ReallySimpleNoteCreateChangeViewController
                 // TODO: something
+                
             }
         }
     

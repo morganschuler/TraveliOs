@@ -3,7 +3,7 @@
 //  rsnt-really-simple-note-taking-ios
 //
 //  Created by Morgan Schuler on 1/15/20.
-//  Copyright © 2020 Németh László Harri. All rights reserved.
+
 //
 
 import UIKit
@@ -37,7 +37,7 @@ class CountryDetailViewController: UIViewController {
     //    @IBAction func favoriteButton(_ sender: Any) {
 //         let myVC = storyboard?.instantiateViewController(withIdentifier: "FavoriteTableViewController") as! FavoriteTableViewController
 //                myVC.favoriteCell = UITableViewCell()
-//                myVC.myString = name
+//                myVC.my = name
 //        //        self.tabBarController?.selectedIndex = 2;
 //                navigationController?.pushViewController(myVC, animated: true)
 //    }

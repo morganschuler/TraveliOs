@@ -56,12 +56,12 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
         
         ReallySimpleNoteStorage.storage.addNote(noteToBeAdded: note)
         
-//        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
 
-        performSegue(
-            withIdentifier: "backToMapView",
-            sender: self)
-    }
+//        performSegue(
+//            withIdentifier: "backToMapView",
+//            sender: self)
+}
 
     private func changeItem() -> Void {
         // get changed note instance

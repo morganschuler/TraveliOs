@@ -44,6 +44,7 @@
 		BED9E3F623CFCFE4002692E5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BED9E3F823CFD317002692E5 /* TripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		BED9E3FA23CFD329002692E5 /* CountryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
+		BEF4797823D247ED001CF086 /* seattle.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = seattle.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +111,7 @@
 		4BDBF63521F5B09400616E04 = {
 			isa = PBXGroup;
 			children = (
+				BEF4797823D247ED001CF086 /* seattle.gpx */,
 				4BDBF64021F5B09400616E04 /* rsnt-really-simple-note-taking-ios */,
 				4BDBF63F21F5B09400616E04 /* Products */,
 			);

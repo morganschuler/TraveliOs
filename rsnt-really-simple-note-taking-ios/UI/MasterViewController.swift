@@ -50,10 +50,12 @@ class MasterViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if splitViewController != nil {
-            clearsSelectionOnViewWillAppear = splitViewController?.isCollapsed ?? true
-            super.viewWillAppear(animated)
-        }
+//        if splitViewController != nil {
+//            clearsSelectionOnViewWillAppear = splitViewController?.isCollapsed ?? true
+//            super.viewWillAppear(animated)  }
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        
 
     }
 
@@ -113,6 +115,11 @@ class MasterViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        tableView.reloadData()
+//    }
 
 
 }

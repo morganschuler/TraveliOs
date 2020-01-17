@@ -3,8 +3,7 @@
 //  rsnt-really-simple-note-taking-ios
 //
 //  Created by Morgan Schuler on 1/15/20.
-//  Copyright © 2020 Németh László Harri. All rights reserved.
-//
+
 
 import UIKit
 import WebKit

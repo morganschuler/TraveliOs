@@ -30,27 +30,52 @@
 //
 //}
 
+struct GlobalVariables {
+   static var coordArray = [CLLocationCoordinate2D]()
+}
 
 import UIKit
 import MapKit
 class MapViewController: UIViewController {
-
+    
+    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        print(GlobalVariables.coordArray)
         mapView.delegate = self
         let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(longTap))
         mapView.addGestureRecognizer(longTapGesture)
     }
 
     @objc func longTap(sender: UIGestureRecognizer){
-        print("long tap")
+//        print("long tap")
         if sender.state == .began {
             let locationInView = sender.location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
             addAnnotation(location: locationOnMap)
         }
+        
+        DispatchQueue.main.async {
+        if GlobalVariables.coordArray.contains(where: { (CLLocationCoordinate2D) -> Bool in
+            true}){
+            for i in GlobalVariables.coordArray {
+                let myLat = i.latitude
+                let myLong = i.longitude
+                let myCoords =  CLLocationCoordinate2DMake(myLat, myLong)
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = myCoords
+                
+                self.mapView.addAnnotation(annotation)
+                }
+            }
+        }
+        
+
+        
     }
 
     func addAnnotation(location: CLLocationCoordinate2D){
@@ -59,6 +84,9 @@ class MapViewController: UIViewController {
 //            annotation.title = "Click to go to journal!"
 
             self.mapView.addAnnotation(annotation)
+        print(annotation.coordinate)
+        GlobalVariables.coordArray.append(annotation.coordinate)
+        print(GlobalVariables.coordArray)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

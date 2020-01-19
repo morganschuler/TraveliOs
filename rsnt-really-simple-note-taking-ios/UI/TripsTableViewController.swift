@@ -14,8 +14,61 @@ struct Country: Decodable {
     let subregion: String
     let demonym: String
     let flag: String
+    let latlng: [Double]
 }
  
+//struct Country: Decodable {
+//    let name: String
+//    let topLevelDomain: [String]
+//    let alpha2Code, alpha3Code: String
+//    let callingCodes: [String]
+//    let capital: String
+//    let altSpellings: [String]
+//    let region, subregion: String
+//    let population: Int
+//    let latlng: [Double]
+//    let demonym: String
+//    let area: Int
+//    let gini: Double?
+//    let timezones, borders: [String]
+//    let nativeName, numericCode: String
+//    let currencies: [Currency]
+//    let languages: [Language]
+//    let translations: Translations
+//    let flag: String
+//    let regionalBlocs: [RegionalBloc]
+//    let cioc: String
+//}
+
+// MARK: - Currency
+//struct Currency: Codable {
+//    let code, name: String
+//    let symbol: String?
+//}
+//
+//// MARK: - Language
+//struct Language: Codable {
+//    let iso6391, iso6392, name, nativeName: String
+//
+//    enum CodingKeys: String, CodingKey {
+//        case iso6391 = "iso639_1"
+//        case iso6392 = "iso639_2"
+//        case name, nativeName
+//    }
+//}
+//
+//// MARK: - RegionalBloc
+//struct RegionalBloc: Codable {
+//    let acronym, name: String
+//    let otherAcronyms, otherNames: [String]
+//}
+//
+//// MARK: - Translations
+//struct Translations: Codable {
+//    let de, es, fr, ja: String
+//    let it, br, pt, nl: String
+//    let hr, fa: String
+//}
 
 class TripsViewController: UITableViewController {
     var favoriteArray = [] as [String]
@@ -132,12 +185,15 @@ class TripsViewController: UITableViewController {
         
 //        vc.demonymLabel = UILabel()
         vc.demonym = availableCountry.demonym
+        vc.myLat = Int(availableCountry.latlng[0])
+        vc.myLong = Int(availableCountry.latlng[1])
+
         
         let urlString = URL(string: availableCountry.flag)!
         let request = URLRequest(url: urlString)
         let svgString = try? String(contentsOf: urlString)
-        print(availableCountry.flag)
-        print(svgString)
+//        print(availableCountry.flag)
+//        print(svgString)
         if svgString != nil {
             vc.svgFlag = svgString!
         }

@@ -50,7 +50,6 @@
 		BEF4797B23D3E2AA001CF086 /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
 		BEF4797D23D3E585001CF086 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		BEF4798323D3E7D0001CF086 /* countries-ISOalpha2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "countries-ISOalpha2.json"; sourceTree = "<group>"; };
-		BEF4798B23D3EA5A001CF086 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +72,6 @@
 				4B8B981521F6409C0048122E /* ReallySimpleNoteUITableViewCell.swift */,
 				4BDBF64321F5B09400616E04 /* MasterViewController.swift */,
 				BED9E3F623CFCFE4002692E5 /* MapViewController.swift */,
-				BEF4798B23D3EA5A001CF086 /* MapViewController.h */,
 				4BDBF64521F5B09400616E04 /* DetailViewController.swift */,
 				BED9E3F823CFD317002692E5 /* TripsTableViewController.swift */,
 				BEF4797D23D3E585001CF086 /* GlobalVariables.swift */,

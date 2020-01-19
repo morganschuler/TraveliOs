@@ -8,7 +8,7 @@
 
 import UIKit
 import WebKit
-
+import MapKit
 
 class CountryDetailViewController: UIViewController {
     var name = ""
@@ -16,6 +16,8 @@ class CountryDetailViewController: UIViewController {
     var subregion = ""
     var demonym = ""
     var flag = ""
+    var myLat = 0
+    var myLong = 0
     
     public var svgFlag: String = "" {
         didSet {
@@ -35,8 +37,10 @@ class CountryDetailViewController: UIViewController {
     
     @IBOutlet weak var imageWebView: WKWebView!
     //    @IBAction func favoriteButton(_ sender: Any) {
-//         let myVC = storyboard?.instantiateViewController(withIdentifier: "FavoriteTableViewController") as! FavoriteTableViewController
-//                myVC.favoriteCell = UITableViewCell()
+    @IBOutlet weak var mapView: MKMapView!
+    //         let myVC = storyboard?.instantiateViewController(withIdentifier: "FavoriteTableViewController") as! FavoriteTableViewController
+
+    //                myVC.favoriteCell = UITableViewCell()
 //                myVC.my = name
 //        //        self.tabBarController?.selectedIndex = 2;
 //                navigationController?.pushViewController(myVC, animated: true)
@@ -59,13 +63,19 @@ class CountryDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        mapView.delegate = self as! MKMapViewDelegate
+        
         nameLabel.text = name
         capitalLabel.text = "Capital:  \(capital)"
         subregionLabel.text = "Subregion: \(subregion)"
         demonymLabel.text = "Demonyn: \(demonym)"
 //        self.imageWebView.loadHTMLString("No flag available", baseURL: nil)
-
+        mapView.setCenter(CLLocationCoordinate2D(latitude: CLLocationDegrees(myLat), longitude: CLLocationDegrees(myLong)), animated: true)
+        let myCoords = CLLocationCoordinate2DMake(CLLocationDegrees(myLat), CLLocationDegrees(myLong))
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = myCoords
+        
+        self.mapView.addAnnotation(annotation)
         imageWebView.center = self.view.center
     }
     

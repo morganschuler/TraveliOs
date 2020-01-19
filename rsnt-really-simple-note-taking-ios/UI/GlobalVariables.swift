@@ -6,9 +6,8 @@
 //  Copyright © 2020 Németh László Harri. All rights reserved.
 //
 
-//import Foundation
-//
-//struct GlobalVariables {
-//   static var coordArray = [CLLocationCoordinate2D]()
-//    
-//}
+import Foundation
+
+struct GlobalVariables {
+   static var coordArray = [Double]()
+}

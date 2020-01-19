@@ -54,13 +54,14 @@ class MapViewController: UIViewController {
 //        if GlobalVariables.coordArray.contains(where: { (CLLocationCoordinate2D) -> Bool in
 //            true}){
 //            for i in GlobalVariables.coordArray {
-//                let myLat = i.latitude
-//                let myLong = i.longitude
+//                let myLat = 38.0000
+//                let myLong = -97.0000
 //                let myCoords =  CLLocationCoordinate2DMake(myLat, myLong)
 //                let annotation = MKPointAnnotation()
 //                annotation.coordinate = myCoords
-//
+
 //                self.mapView.addAnnotation(annotation)
+//                mapView.addAnnotations(pizzaAnnotations.restaurants)
 //                }
 //            }
 //        }
@@ -110,6 +111,7 @@ class MapViewController: UIViewController {
     func addAnnotation(location: CLLocationCoordinate2D){
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
+            print(GlobalVariables.coordArray)
 //            annotation.title = "Click to go to journal!"
 
             self.mapView.addAnnotation(annotation)

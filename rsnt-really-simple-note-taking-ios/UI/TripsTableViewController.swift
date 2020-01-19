@@ -188,6 +188,8 @@ class TripsViewController: UITableViewController {
             
             FavoriteAction.backgroundColor = .red
         }
+        print(favoriteArray)
+
             
 
 //            let alert = UIAlertController(title: "Highlight removed!", message: nil, preferredStyle: .alert)

@@ -23,6 +23,9 @@
 		BED9E3F723CFCFE4002692E5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9E3F623CFCFE4002692E5 /* MapViewController.swift */; };
 		BED9E3F923CFD317002692E5 /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9E3F823CFD317002692E5 /* TripsTableViewController.swift */; };
 		BED9E3FB23CFD329002692E5 /* CountryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9E3FA23CFD329002692E5 /* CountryDetailViewController.swift */; };
+		BEF4797C23D3E2AA001CF086 /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF4797B23D3E2AA001CF086 /* DoneButton.swift */; };
+		BEF4797E23D3E585001CF086 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF4797D23D3E585001CF086 /* GlobalVariables.swift */; };
+		BEF4798423D3E7D0001CF086 /* countries-ISOalpha2.json in Resources */ = {isa = PBXBuildFile; fileRef = BEF4798323D3E7D0001CF086 /* countries-ISOalpha2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +34,7 @@
 		4B85A55121FAD00200933413 /* ReallySimpleNoteDateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReallySimpleNoteDateHelper.swift; sourceTree = "<group>"; };
 		4B85A55321FAD4BC00933413 /* ReallySimpleNoteCoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReallySimpleNoteCoreDataHelper.swift; sourceTree = "<group>"; };
 		4B8B981521F6409C0048122E /* ReallySimpleNoteUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReallySimpleNoteUITableViewCell.swift; sourceTree = "<group>"; };
-		4BDBF63E21F5B09400616E04 /* rsnt-really-simple-note-taking-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rsnt-really-simple-note-taking-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BDBF63E21F5B09400616E04 /* Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BDBF64121F5B09400616E04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BDBF64321F5B09400616E04 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		4BDBF64521F5B09400616E04 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +47,10 @@
 		BED9E3F623CFCFE4002692E5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BED9E3F823CFD317002692E5 /* TripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 		BED9E3FA23CFD329002692E5 /* CountryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
-		BEF4797823D247ED001CF086 /* seattle.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = seattle.gpx; sourceTree = "<group>"; };
+		BEF4797B23D3E2AA001CF086 /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
+		BEF4797D23D3E585001CF086 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		BEF4798323D3E7D0001CF086 /* countries-ISOalpha2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "countries-ISOalpha2.json"; sourceTree = "<group>"; };
+		BEF4798B23D3EA5A001CF086 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +73,14 @@
 				4B8B981521F6409C0048122E /* ReallySimpleNoteUITableViewCell.swift */,
 				4BDBF64321F5B09400616E04 /* MasterViewController.swift */,
 				BED9E3F623CFCFE4002692E5 /* MapViewController.swift */,
+				BEF4798B23D3EA5A001CF086 /* MapViewController.h */,
 				4BDBF64521F5B09400616E04 /* DetailViewController.swift */,
 				BED9E3F823CFD317002692E5 /* TripsTableViewController.swift */,
+				BEF4797D23D3E585001CF086 /* GlobalVariables.swift */,
 				BED9E3FA23CFD329002692E5 /* CountryDetailViewController.swift */,
 				4B7A016721F7041F00854E02 /* ReallySimpleNoteCreateChangeViewController.swift */,
+				BEF4797B23D3E2AA001CF086 /* DoneButton.swift */,
+				BEF4798023D3E746001CF086 /* Map Overlay */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -111,7 +121,6 @@
 		4BDBF63521F5B09400616E04 = {
 			isa = PBXGroup;
 			children = (
-				BEF4797823D247ED001CF086 /* seattle.gpx */,
 				4BDBF64021F5B09400616E04 /* rsnt-really-simple-note-taking-ios */,
 				4BDBF63F21F5B09400616E04 /* Products */,
 			);
@@ -120,7 +129,7 @@
 		4BDBF63F21F5B09400616E04 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4BDBF63E21F5B09400616E04 /* rsnt-really-simple-note-taking-ios.app */,
+				4BDBF63E21F5B09400616E04 /* Travel.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +146,14 @@
 				4BDBF64F21F5B09600616E04 /* Info.plist */,
 			);
 			path = "rsnt-really-simple-note-taking-ios";
+			sourceTree = "<group>";
+		};
+		BEF4798023D3E746001CF086 /* Map Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				BEF4798323D3E7D0001CF086 /* countries-ISOalpha2.json */,
+			);
+			path = "Map Overlay";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,7 +173,7 @@
 			);
 			name = "rsnt-really-simple-note-taking-ios";
 			productName = "rsnt-really-simple-note-taking-ios";
-			productReference = 4BDBF63E21F5B09400616E04 /* rsnt-really-simple-note-taking-ios.app */;
+			productReference = 4BDBF63E21F5B09400616E04 /* Travel.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -197,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF4798423D3E7D0001CF086 /* countries-ISOalpha2.json in Resources */,
 				4BDBF64E21F5B09600616E04 /* LaunchScreen.storyboard in Resources */,
 				4BDBF64B21F5B09600616E04 /* Assets.xcassets in Resources */,
 				4BDBF64921F5B09400616E04 /* Main.storyboard in Resources */,
@@ -219,8 +237,10 @@
 				BED9E3F923CFD317002692E5 /* TripsTableViewController.swift in Sources */,
 				4BDBF64421F5B09400616E04 /* MasterViewController.swift in Sources */,
 				BED9E3FB23CFD329002692E5 /* CountryDetailViewController.swift in Sources */,
+				BEF4797E23D3E585001CF086 /* GlobalVariables.swift in Sources */,
 				4B7A016821F7041F00854E02 /* ReallySimpleNoteCreateChangeViewController.swift in Sources */,
 				4B85A55421FAD4BC00933413 /* ReallySimpleNoteCoreDataHelper.swift in Sources */,
+				BEF4797C23D3E2AA001CF086 /* DoneButton.swift in Sources */,
 				4BDBF64221F5B09400616E04 /* AppDelegate.swift in Sources */,
 				4B85A55221FAD00200933413 /* ReallySimpleNoteDateHelper.swift in Sources */,
 			);
@@ -369,14 +389,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SUX258YGSM;
 				INFOPLIST_FILE = "rsnt-really-simple-note-taking-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "nlharri.rsnt-really-simple-note-taking-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = .comschuler;
+				PRODUCT_NAME = Travel;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -387,14 +408,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SUX258YGSM;
 				INFOPLIST_FILE = "rsnt-really-simple-note-taking-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "nlharri.rsnt-really-simple-note-taking-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = .comschuler;
+				PRODUCT_NAME = Travel;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -103,7 +103,7 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
         super.viewDidLoad()
         // set text view delegate so that we can react on text change
         noteTextTextView.delegate = self
-        
+        self.noteTextTextView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         // check if we are in create mode or in change mode
         if let changingReallySimpleNote = self.changingReallySimpleNote {
             // in change mode: initialize for fields with data coming from note to be changed
@@ -130,7 +130,9 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
    
     }
     
- 
+     @objc func tapDone(sender: Any) {
+         self.view.endEditing(true)
+     }
 
     //Handle the text changes here
     func textViewDidChange(_ textView: UITextView) {

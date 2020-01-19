@@ -66,12 +66,26 @@ class CountryDetailViewController: UIViewController {
         demonymLabel.text = "Demonyn: \(demonym)"
 //        self.imageWebView.loadHTMLString("No flag available", baseURL: nil)
 
+        imageWebView.center = self.view.center
     }
     
-    func reloadsvgFlag() {
-        self.imageWebView.loadHTMLString("<div style='width:100%;height:100%;background-color:red;'>\(self.svgFlag)</div>", baseURL: nil)
-    }
 
+//    func reloadsvgFlag() {
+//        self.imageWebView.loadHTMLString(self.svgFlag, baseURL: nil)
+//
+//    }
+    
+//    func reloadsvgFlag() {
+//          self.imageWebView.loadHTMLString("<div style='width:150px;height:150px;background-color:white;text-align:center'>\(self.svgFlag)</div>", baseURL: nil)
+//    }
+    
+    func reloadsvgFlag() {
+          self.imageWebView.loadHTMLString("<div style='width:100%;'>\(self.svgFlag)</>", baseURL: nil)
+    }
+//
+        
+//      }
+      
 
 
 }

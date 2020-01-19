@@ -13,40 +13,55 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
-        // Core data initialization
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            // create alert
-            let alert = UIAlertController(
-                title: "Could note get app delegate",
-                message: "Could note get app delegate, unexpected error occurred. Try again later.",
-                preferredStyle: .alert)
-            
-            // add OK action
-            alert.addAction(UIAlertAction(title: "OK",
-                                          style: .default))
-            // show alert
-            self.present(alert, animated: true)
-
-            return
+//        let notificationNme = NSNotification.Name("NotificationIdf")
+//           NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.reloadTableview), name: notificationNme, object: nil)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
         
-        // As we know that container is set up in the AppDelegates so we need to refer that container.
-        // We need to create a context from this container
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        // set context in the storage
-        ReallySimpleNoteStorage.storage.setManagedContext(managedObjectContext: managedContext)
+//        // Core data initialization
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//            // create alert
+//            let alert = UIAlertController(
+//                title: "Could note get app delegate",
+//                message: "Could note get app delegate, unexpected error occurred. Try again later.",
+//                preferredStyle: .alert)
+//            
+//            // add OK action
+//            alert.addAction(UIAlertAction(title: "OK",
+//                                          style: .default))
+//            // show alert
+//            self.present(alert, animated: true)
+//
+//            return
+//        }
+//        
+//        
+//        // As we know that container is set up in the AppDelegates so we need to refer that container.
+//        // We need to create a context from this container
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//        
+//        // set context in the storage
+//        // this needs to be called before 
+//        ReallySimpleNoteStorage.storage.setManagedContext(managedObjectContext: managedContext)
         
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.leftBarButtonItem = editButtonItem
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
-        if let split = splitViewController {
-            let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+//        navigationItem.rightBarButtonItem = addButton
+//        if let split = splitViewController {
+//            let controllers = split.viewControllers
+//            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+//        }
+    }
+    
+    @objc func reloadTableview() {
+        self.tableView.reloadData()
+    }
+    
+     @objc func refresh() {
+        self.tableView.reloadData() // a refresh the tableView.
     }
 
     override func viewWillAppear(_ animated: Bool) {

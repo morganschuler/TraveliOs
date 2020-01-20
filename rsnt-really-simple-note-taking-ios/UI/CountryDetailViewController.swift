@@ -38,6 +38,7 @@ class CountryDetailViewController: UIViewController {
     @IBOutlet weak var imageWebView: WKWebView!
     //    @IBAction func favoriteButton(_ sender: Any) {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var container: UIView!
     //         let myVC = storyboard?.instantiateViewController(withIdentifier: "FavoriteTableViewController") as! FavoriteTableViewController
 
     //                myVC.favoriteCell = UITableViewCell()
@@ -76,10 +77,15 @@ class CountryDetailViewController: UIViewController {
         annotation.coordinate = myCoords
         
         self.mapView.addAnnotation(annotation)
-        imageWebView.center = self.view.center
+  //      imageWebView.center = self.view.center
+
+
+        self.imageWebView.isOpaque = false;
+        self.imageWebView.backgroundColor = UIColor.clear
     }
     
 
+    
 //    func reloadsvgFlag() {
 //        self.imageWebView.loadHTMLString(self.svgFlag, baseURL: nil)
 //

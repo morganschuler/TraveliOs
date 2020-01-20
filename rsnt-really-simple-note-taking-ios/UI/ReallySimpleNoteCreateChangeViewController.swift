@@ -74,27 +74,27 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
                     noteText:      noteTextTextView.text,
                     noteTimeStamp: noteCreationTimeStamp))
             // navigate back to list of notes
-            performSegue(
-                withIdentifier: "backToMapView",
-                sender: self)
-        } else {
+//            performSegue(
+//                withIdentifier: "backToMapView",
+//                sender: self)
+//            self.dismiss(animated: true, completion: nil)
+//        } else {
             // create alert
             let alert = UIAlertController(
-                title: "Unexpected error",
-                message: "Cannot change the note, unexpected error occurred. Try again later.",
+                title: "Note saved!",
+                message: nil,
                 preferredStyle: .alert)
             
             // add OK action
             alert.addAction(UIAlertAction(title: "OK",
                                           style: .default )
-            { (_) in self.performSegue(
-                                              withIdentifier: "backToMapView",
-                                              sender: self)}
+//            { (_) in self.performSegue(
+//                                              withIdentifier: "backToMapView",
+//                                              sender: self)}
             )
             // show alert
-
+            
             self.present(alert, animated: true)
-//            self.dismiss(animated: true, completion: nil)
 
         }
     }

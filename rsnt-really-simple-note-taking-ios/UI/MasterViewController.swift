@@ -40,9 +40,9 @@ class MasterViewController: UITableViewController {
 //        // As we know that container is set up in the AppDelegates so we need to refer that container.
 //        // We need to create a context from this container
 //        let managedContext = appDelegate.persistentContainer.viewContext
-//        
-//        // set context in the storage
-//        // this needs to be called before 
+        
+        // set context in the storage
+        // this needs to be called before
 //        ReallySimpleNoteStorage.storage.setManagedContext(managedObjectContext: managedContext)
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -63,6 +63,8 @@ class MasterViewController: UITableViewController {
      @objc func refresh() {
         self.tableView.reloadData() // a refresh the tableView.
     }
+
+    @IBAction func unwindSegueToVC1(segue:UIStoryboardSegue) { }
 
     override func viewWillAppear(_ animated: Bool) {
 //        if splitViewController != nil {

@@ -31,6 +31,10 @@ class DetailViewController: UIViewController {
         configureView()
 
     }
+    
+   @IBAction func goBackToOneButtonTapped(_ sender: Any) {
+           performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+      }
 
     var detailItem: ReallySimpleNote? {
         didSet {

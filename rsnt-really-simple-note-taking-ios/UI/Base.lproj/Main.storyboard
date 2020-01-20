@@ -26,7 +26,7 @@
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController title="Detail" id="JEX-9P-axG" customClass="DetailViewController" customModule="rsnt_really_simple_note_taking_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detail" id="JEX-9P-axG" customClass="DetailViewController" customModule="Travel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,16 +82,18 @@
                         <outlet property="noteDate" destination="Nkq-dP-66J" id="rmc-TH-LRC"/>
                         <outlet property="noteTextTextView" destination="Zxg-qG-x94" id="BD0-v6-tYL"/>
                         <outlet property="noteTitleLabel" destination="1Uh-6m-Vox" id="eUh-rm-ZU3"/>
+                        <segue destination="Aze-FE-mSj" kind="unwind" identifier="unwindSeguetoVC1" unwindAction="unwindToVC1WithSegue:" id="Rbo-Gb-DEp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
+                <exit id="Aze-FE-mSj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1463" y="424"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="TV6-vz-2yF">
             <objects>
-                <viewController id="1C3-ZU-c9N" customClass="MapViewController" customModule="rsnt_really_simple_note_taking_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1C3-ZU-c9N" customClass="MapViewController" customModule="Travel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nQc-uT-YWa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,6 +105,10 @@
                                     <outlet property="delegate" destination="1C3-ZU-c9N" id="cCf-3Z-QZf"/>
                                 </connections>
                             </mapView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1KY-si-VV4">
+                                <rect key="frame" x="0.0" y="0.0" width="174" height="156"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Q9t-Xd-8Nm"/>
@@ -110,13 +116,14 @@
                     <tabBarItem key="tabBarItem" title="" image="pin" catalog="system" selectedImage="pin" id="aOL-Tl-w38"/>
                     <navigationItem key="navigationItem" id="8Pu-JP-HW8"/>
                     <connections>
+                        <outlet property="cornerMap" destination="1KY-si-VV4" id="44Z-xu-Eid"/>
                         <outlet property="mapView" destination="q1U-ij-8pJ" id="yki-gL-UYR"/>
                         <segue destination="pJp-4i-4zG" kind="show" identifier="segue1" id="1um-fu-zMa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHo-Gz-hsJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-898" y="-1254"/>
+            <point key="canvasLocation" x="-898.39999999999998" y="-1254.4227886056972"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="amC-We-d9H">
@@ -156,25 +163,25 @@
         <!--Really Simple Note Create Change View Controller-->
         <scene sceneID="Ssu-2x-IDb">
             <objects>
-                <viewController id="pJp-4i-4zG" customClass="ReallySimpleNoteCreateChangeViewController" customModule="rsnt_really_simple_note_taking_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pJp-4i-4zG" customClass="ReallySimpleNoteCreateChangeViewController" customModule="Travel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fe8-VP-KXW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGz-T5-2KI">
-                                <rect key="frame" x="16" y="60" width="143" height="17"/>
+                                <rect key="frame" x="16" y="16" width="143" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ut0-il-KPg">
-                                <rect key="frame" x="16" y="127" width="343" height="17"/>
+                                <rect key="frame" x="16" y="83" width="343" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Note 1" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ep7-Da-01O">
-                                <rect key="frame" x="16" y="85" width="343" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Destination" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ep7-Da-01O">
+                                <rect key="frame" x="16" y="41" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -183,13 +190,13 @@
                                 </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="C0j-ww-jez">
-                                <rect key="frame" x="16" y="152" width="343" height="396"/>
+                                <rect key="frame" x="16" y="108" width="343" height="469"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JXb-w8-Aje">
-                                <rect key="frame" x="150" y="60" width="209" height="17"/>
+                                <rect key="frame" x="150" y="16" width="209" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -243,13 +250,13 @@
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
-                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="rsnt_really_simple_note_taking_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="Travel" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="104" id="WCw-Qf-5nD" customClass="ReallySimpleNoteUITableViewCell" customModule="rsnt_really_simple_note_taking_ios" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="104" id="WCw-Qf-5nD" customClass="ReallySimpleNoteUITableViewCell" customModule="Travel" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="104"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
@@ -348,7 +355,7 @@
         <!--Trips View Controller-->
         <scene sceneID="eeC-Cb-e7S">
             <objects>
-                <tableViewController id="A8D-PW-6Xe" customClass="TripsViewController" customModule="rsnt_really_simple_note_taking_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="A8D-PW-6Xe" customClass="TripsViewController" customModule="Travel" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="q9l-cn-CtK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -370,34 +377,52 @@
         <!-- Additional Information-->
         <scene sceneID="Rld-vq-hdb">
             <objects>
-                <viewController storyboardIdentifier="CountryDetailViewController" id="N4W-aa-jR1" customClass="CountryDetailViewController" customModule="rsnt_really_simple_note_taking_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CountryDetailViewController" id="N4W-aa-jR1" customClass="CountryDetailViewController" customModule="Travel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RJq-Mh-2Kl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pv6-aS-8Wb">
-                                <rect key="frame" x="17" y="76" width="343" height="90"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subregion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XpR-yI-wkD">
-                                <rect key="frame" x="43" y="402" width="291" height="55"/>
+                                <rect key="frame" x="43" y="477" width="291" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Capital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkO-uK-hfX">
-                                <rect key="frame" x="43" y="465" width="283" height="55"/>
+                                <rect key="frame" x="43" y="515" width="283" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <wkWebView contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kwo-Gu-gBk">
-                                <rect key="frame" x="215" y="76" width="160" height="111"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xX5-EF-JUG">
+                                <rect key="frame" x="16" y="292" width="343" height="177"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Demonym" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zN-D6-I3M">
+                                <rect key="frame" x="43" y="557" width="316" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w3t-Pc-iuM">
+                                <rect key="frame" x="67" y="122" width="240" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="o5y-JS-oYi" kind="embed" id="BNk-cY-qeT"/>
+                                </connections>
+                            </containerView>
+                            <wkWebView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kwo-Gu-gBk">
+                                <rect key="frame" x="262" y="65" width="45" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO" allowsPictureInPictureMediaPlayback="NO">
@@ -405,17 +430,6 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xX5-EF-JUG">
-                                <rect key="frame" x="64" y="266" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Demonym" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zN-D6-I3M">
-                                <rect key="frame" x="43" y="528" width="316" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Ep9-tl-mdw"/>
@@ -423,6 +437,7 @@
                     <navigationItem key="navigationItem" title=" Additional Information" id="rqT-eD-zDa"/>
                     <connections>
                         <outlet property="capitalLabel" destination="lkO-uK-hfX" id="ZiG-Dg-ajC"/>
+                        <outlet property="container" destination="w3t-Pc-iuM" id="4el-Ha-Wey"/>
                         <outlet property="demonymLabel" destination="9zN-D6-I3M" id="Fft-cm-Mn1"/>
                         <outlet property="imageWebView" destination="Kwo-Gu-gBk" id="OkR-A7-we8"/>
                         <outlet property="mapView" destination="xX5-EF-JUG" id="RcK-aI-Aou"/>
@@ -434,6 +449,20 @@
             </objects>
             <point key="canvasLocation" x="732" y="-2125.1874062968518"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="hat-g5-Jkz">
+            <objects>
+                <viewController id="o5y-JS-oYi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VOk-he-YbL">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="162"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qij-Rq-pjj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1549" y="-2361"/>
+        </scene>
     </scenes>
     <resources>
         <image name="book" catalog="system" width="64" height="50"/>
@@ -441,6 +470,6 @@
         <image name="pin" catalog="system" width="58" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fDC-o9-vsF"/>
+        <segue reference="1um-fu-zMa"/>
     </inferredMetricsTieBreakers>
 </document>

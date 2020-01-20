@@ -8,6 +8,7 @@
 
 import Foundation
 
-struct GlobalVariables {
-   static var coordArray = [Double]()
-}
+//struct GlobalVariables {
+//   static var locationList: [Locations] = []
+//
+//}

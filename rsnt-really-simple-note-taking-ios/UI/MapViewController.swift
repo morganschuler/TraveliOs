@@ -34,21 +34,54 @@
 //   static var coordArray = [CLLocationCoordinate2D]()
 //}
 
+
 import UIKit
 import MapKit
-class MapViewController: UIViewController {
+import CoreLocation
 
+
+
+class MapViewController: UIViewController {
+    
+//    var coordinates: [MKPointAnnotation] = []
+    var routeArr: [CLLocationCoordinate2D] = []
+    
+    fileprivate let locationManager: CLLocationManager = {
+        let manager = CLLocationManager()
+        manager.requestWhenInUseAuthorization()
+        return manager
+    }()
+    
+    @IBOutlet weak var cornerMap: MKMapView!
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let notificationNme = NSNotification.Name("NotificationIdf")
-        
+//        let notificationNme = NSNotification.Name("NotificationIdf")
 //        print(GlobalVariables.coordArray)
         mapView.delegate = self
         let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(longTap))
         mapView.addGestureRecognizer(longTapGesture)
         
+
+        self.cornerMap.layer.borderColor = UIColor.black.cgColor
+        self.cornerMap.layer.borderWidth = 2.0;
+        self.cornerMap.isZoomEnabled = false;
+        self.cornerMap.isScrollEnabled = false;
+        self.cornerMap.isUserInteractionEnabled = false;
+      
+        setUpMapView()
+
+
+//        func setupMap() {
+//            mapView.delegate = self
+//            // BusStop implements the MKAnnotation protocol, I have an array of them
+////            let routeCoordinates = coordinates.map({ $0.coordinate })
+////            let routeLine = MKPolyline(coordinates: routeCoordinates, count: routeCoordinates.count)
+////            mapView.setVisibleMapRect(routeLine.boundingMapRect, animated: false)
+////            mapView.addOverlay(routeLine)
+//        }
+
         
 //        DispatchQueue.main.async {
 //        if GlobalVariables.coordArray.contains(where: { (CLLocationCoordinate2D) -> Bool in
@@ -66,7 +99,33 @@ class MapViewController: UIViewController {
 //            }
 //        }
     }
+    
+    func setUpMapView() {
+       cornerMap.showsUserLocation = true
+       cornerMap.showsCompass = true
+       cornerMap.showsScale = true
+       currentLocation()
+    }
 
+    func currentLocation() {
+       locationManager.delegate = self
+       locationManager.desiredAccuracy = kCLLocationAccuracyBest
+       if #available(iOS 11.0, *) {
+          locationManager.showsBackgroundLocationIndicator = true
+       } else {
+          // Fallback on earlier versions
+       }
+       locationManager.startUpdatingLocation()
+    }
+
+
+    func applicationDidBecomeActive(application: UIApplication) {
+         //This method is called when the rootViewController is set and the view.
+        let alert = UIAlertController(title: "some title", message: "some message", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
+    }
     
     @objc func longTap(sender: UIGestureRecognizer){
 //        print("long tap")
@@ -74,6 +133,7 @@ class MapViewController: UIViewController {
             let locationInView = sender.location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
             addAnnotation(location: locationOnMap)
+//            coordinates.append(locationOnMap)
         }
         
 
@@ -111,14 +171,19 @@ class MapViewController: UIViewController {
     func addAnnotation(location: CLLocationCoordinate2D){
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
-            print(GlobalVariables.coordArray)
+//            print(GlobalVariables.coordArray)
 //            annotation.title = "Click to go to journal!"
-
             self.mapView.addAnnotation(annotation)
-//        print(annotation.coordinate)
-//        GlobalVariables.coordArray.append(annotation.coordinate)
-//        print(GlobalVariables.coordArray)
+//        for index in 0..<GlobalVariables.locationsList.count{
+//        var lat = Double(GlobalVariables.locationsList[index].latitude)
+//        var long = Double(GlobalVariables.locationsList[index].longitude)
+//        var coordinatesToAppend = CLLocationCoordinate2D(latitude: lat, longitude: long)
+//        coordinates.append(annotation)
+//        print(coordinates)
+
+
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "segue1" {
@@ -152,18 +217,41 @@ extension MapViewController: MKMapViewDelegate{
         return pinView
     }
 
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView {
-            if ((view.annotation?.title!) != nil) {
-               print("do something")
-            }
-        }
-    }
+//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+//        if control == view.rightCalloutAccessoryView {
+//            if ((view.annotation?.title!) != nil) {
+//               print("do something")
+//            }
+//        }
+//    }
     
    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
            performSegue(withIdentifier: "segue1", sender: nil)
        }
+    
+//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+//        if let polyline = overlay as? MKPolyline {
+//            let polylineRenderer = MKPolylineRenderer(overlay: polyline)
+//            polylineRenderer.strokeColor = .blue
+//            polylineRenderer.lineWidth = 3
+//            return polylineRenderer
+//        }
+//        return MKOverlayRenderer(overlay: overlay)
+//    }
+    
+    
+}
 
+extension MapViewController: CLLocationManagerDelegate {
+   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+      
+      let location = locations.last! as CLLocation
+      let currentLocation = location.coordinate
+      let coordinateRegion = MKCoordinateRegion(center: currentLocation, latitudinalMeters: 10000, longitudinalMeters: 10000)
+      cornerMap.setRegion(coordinateRegion, animated: true)
+      locationManager.stopUpdatingLocation()
    }
-
-
+   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+      print(error.localizedDescription)
+   }
+}

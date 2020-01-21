@@ -1,9 +1,3 @@
-//
-//  ReallySimpleNoteCreateChangeViewController.swift
-//  rsnt-really-simple-note-taking-ios
-//
-
-//
 
 import UIKit
 import MapKit
@@ -62,6 +56,13 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
 //            withIdentifier: "backToMapView",
 //            sender: self)
 }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if noteTextTextView.textColor == UIColor.lightGray {
+            noteTextTextView.text = nil
+            noteTextTextView.textColor = UIColor.black
+        }
+    }
 
     private func changeItem() -> Void {
         // get changed note instance
@@ -126,13 +127,25 @@ class ReallySimpleNoteCreateChangeViewController : UIViewController, UITextViewD
         // For back button in navigation bar, change text
         let backButton = UIBarButtonItem()
         backButton.title = "Back"
+        backButton.action = #selector(self.backButtonClicked)
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-   
+        
+        // check if empty string or nil
+        if noteTextTextView == nil {
+            noteTextTextView.text = "Reflect on your travels! \nWhat did you see? \nWhat food did you try? \nWhat was your favorite part? Jot it down!"
+            noteTextTextView.textColor = UIColor.lightGray
+        } else {
+            noteTextTextView.textColor = UIColor.black
+        }
     }
     
      @objc func tapDone(sender: Any) {
          self.view.endEditing(true)
      }
+    
+    @objc func backButtonClicked() {
+        print("button clicked")
+    }
 
     //Handle the text changes here
     func textViewDidChange(_ textView: UITextView) {

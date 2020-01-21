@@ -12,6 +12,7 @@ class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
 
     override func viewDidLoad() {
+        print("master view loaded")
         super.viewDidLoad()
 //        let notificationNme = NSNotification.Name("NotificationIdf")
 //           NotificationCenter.default.addObserver(self, selector: #selector(MasterViewController.reloadTableview), name: notificationNme, object: nil)
@@ -64,7 +65,7 @@ class MasterViewController: UITableViewController {
         self.tableView.reloadData() // a refresh the tableView.
     }
 
-    @IBAction func unwindSegueToVC1(segue:UIStoryboardSegue) { }
+//    @IBAction func unwindSegueToVC1(segue:UIStoryboardSegue) { }
 
     override func viewWillAppear(_ animated: Bool) {
 //        if splitViewController != nil {
@@ -103,7 +104,6 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return objects.count
         return ReallySimpleNoteStorage.storage.count()
     }
 
@@ -132,12 +132,5 @@ class MasterViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        tableView.reloadData()
-//    }
-
-
 }
 

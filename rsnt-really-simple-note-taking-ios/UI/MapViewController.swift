@@ -1,40 +1,3 @@
-//
-//  MapViewController.swift
-//  rsnt-really-simple-note-taking-ios
-//
-//  Created by Morgan Schuler on 1/15/20.
-//
-//
-//import UIKit
-//import MapKit
-//
-//class MapViewController: UIViewController {
-//    @IBOutlet weak var mapView: MKMapView!
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // Do any additional setup after loading the view.
-//    }
-//    
-//
-//    /*
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
-//    */
-//
-//}
-//
-//struct GlobalVariables {
-//   static var coordArray = [CLLocationCoordinate2D]()
-//}
-
-
 import UIKit
 import MapKit
 import CoreLocation
@@ -71,16 +34,7 @@ class MapViewController: UIViewController {
         self.cornerMap.isUserInteractionEnabled = false;
       
         setUpMapView()
-
-
-//        func setupMap() {
-//            mapView.delegate = self
-//            // BusStop implements the MKAnnotation protocol, I have an array of them
-////            let routeCoordinates = coordinates.map({ $0.coordinate })
-////            let routeLine = MKPolyline(coordinates: routeCoordinates, count: routeCoordinates.count)
-////            mapView.setVisibleMapRect(routeLine.boundingMapRect, animated: false)
-////            mapView.addOverlay(routeLine)
-//        }
+    }
 
         
 //        DispatchQueue.main.async {
@@ -98,7 +52,7 @@ class MapViewController: UIViewController {
 //                }
 //            }
 //        }
-    }
+//    }
     
     func setUpMapView() {
        cornerMap.showsUserLocation = true
@@ -133,63 +87,21 @@ class MapViewController: UIViewController {
             let locationInView = sender.location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
             addAnnotation(location: locationOnMap)
-//            coordinates.append(locationOnMap)
         }
-        
-
-        
-
-    // Core data initialization
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-        // create alert
-        let alert = UIAlertController(
-            title: "Could note get app delegate",
-            message: "Could note get app delegate, unexpected error occurred. Try again later.",
-            preferredStyle: .alert)
-
-        // add OK action
-        alert.addAction(UIAlertAction(title: "OK",
-                                      style: .default))
-        // show alert
-        self.present(alert, animated: true)
-
-        return
     }
 
-
-    // As we know that container is set up in the AppDelegates so we need to refer that container.
-    // We need to create a context from this container
-    let managedContext = appDelegate.persistentContainer.viewContext
-
-    // set context in the storage
-    // this needs to be called before
-    ReallySimpleNoteStorage.storage.setManagedContext(managedObjectContext: managedContext)
-
-
-    }
 
     func addAnnotation(location: CLLocationCoordinate2D){
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
-//            print(GlobalVariables.coordArray)
-//            annotation.title = "Click to go to journal!"
             self.mapView.addAnnotation(annotation)
-//        for index in 0..<GlobalVariables.locationsList.count{
-//        var lat = Double(GlobalVariables.locationsList[index].latitude)
-//        var long = Double(GlobalVariables.locationsList[index].longitude)
-//        var coordinatesToAppend = CLLocationCoordinate2D(latitude: lat, longitude: long)
-//        coordinates.append(annotation)
-//        print(coordinates)
-
-
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "segue1" {
                 let ReallySimpleNoteCreateChangeViewController = segue.destination as! ReallySimpleNoteCreateChangeViewController
-                // TODO: something
-                
+
             }
         }
     
@@ -216,29 +128,10 @@ extension MapViewController: MKMapViewDelegate{
         }
         return pinView
     }
-
-//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//        if control == view.rightCalloutAccessoryView {
-//            if ((view.annotation?.title!) != nil) {
-//               print("do something")
-//            }
-//        }
-//    }
     
    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
            performSegue(withIdentifier: "segue1", sender: nil)
        }
-    
-//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-//        if let polyline = overlay as? MKPolyline {
-//            let polylineRenderer = MKPolylineRenderer(overlay: polyline)
-//            polylineRenderer.strokeColor = .blue
-//            polylineRenderer.lineWidth = 3
-//            return polylineRenderer
-//        }
-//        return MKOverlayRenderer(overlay: overlay)
-//    }
-    
     
 }
 

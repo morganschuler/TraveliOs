@@ -1,11 +1,3 @@
-//
-//  CountryDetailViewController.swift
-//  rsnt-really-simple-note-taking-ios
-//
-//  Created by Morgan Schuler on 1/15/20.
-
-//
-
 import UIKit
 import WebKit
 import MapKit
@@ -39,27 +31,6 @@ class CountryDetailViewController: UIViewController {
     //    @IBAction func favoriteButton(_ sender: Any) {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var container: UIView!
-    //         let myVC = storyboard?.instantiateViewController(withIdentifier: "FavoriteTableViewController") as! FavoriteTableViewController
-
-    //                myVC.favoriteCell = UITableViewCell()
-//                myVC.my = name
-//        //        self.tabBarController?.selectedIndex = 2;
-//                navigationController?.pushViewController(myVC, animated: true)
-//    }
-
-    
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        var secondController = segue.destination as! FavoritesTableViewController
-//        secondController.myString =
-//    }
-  
-//    @IBAction func favoriteButton(_ sender: UIButton) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(identifier: "FavoritesViewController") as! FavoritesViewController
-//        
-//        vc.favoriteLabel = UILabel()
-//        vc.favoriteArray = name
-//    }
 
     
     override func viewDidLoad() {
@@ -77,8 +48,6 @@ class CountryDetailViewController: UIViewController {
         annotation.coordinate = myCoords
         
         self.mapView.addAnnotation(annotation)
-  //      imageWebView.center = self.view.center
-
 
         self.imageWebView.isOpaque = false;
         self.imageWebView.backgroundColor = UIColor.clear

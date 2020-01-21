@@ -29,7 +29,11 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         configureView()
-
+        print("detail view load")
+      
+            // Update the view.
+//        self.loadView()
+        
     }
     
    @IBAction func goBackToOneButtonTapped(_ sender: Any) {
@@ -44,6 +48,7 @@ class DetailViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("back")
         if segue.identifier == "showChangeNoteSegue" {
             let changeNoteViewController = segue.destination as! ReallySimpleNoteCreateChangeViewController
             if let detail = detailItem {

@@ -101,10 +101,6 @@ class TripsViewController: UITableViewController {
         URLSession.shared.dataTask(with: urlObj!) {(data, response, error) in
             do {
                 self.availableCountries = try JSONDecoder().decode([Country].self, from:data!)
-//                print(countries)
-//                for country in self.availableCountries {
-//                    print(self.availableCountries)
-//                }
             } catch {
                 print("We got an error")
             }
@@ -245,13 +241,6 @@ class TripsViewController: UITableViewController {
             FavoriteAction.backgroundColor = .red
         }
         print(favoriteArray)
-
-            
-
-//            let alert = UIAlertController(title: "Highlight removed!", message: nil, preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "OK!", style: .default, handler: nil))
-//            self.present(alert, animated: true)
-                
 
         return UISwipeActionsConfiguration(actions: [FavoriteAction])
     }

@@ -11,10 +11,10 @@ Although many travel apps exist that allow you to create an itinerary for upcomi
 
 ## Demo
 ![home](home.jpeg)
-![search](search.jpeg)
 ![map](map.jpeg)
 ![journal](journal.jpeg)
 ![favorited](favorited.jpeg)
+![search](search.jpeg)
 ![details](details.jpeg)
 
 ## Credits

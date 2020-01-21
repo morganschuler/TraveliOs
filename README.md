@@ -10,7 +10,7 @@ Although many travel apps exist that allow you to create an itinerary for upcomi
 4) Internet acess is required to load the country details. 
 
 ## Demo
-![home](home.jpeg | width=50)
+![home](home.jpep)
 ![map](map.jpeg)
 ![journal](journal.jpeg)
 ![favorited](favorited.jpeg)

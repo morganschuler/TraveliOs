@@ -10,6 +10,7 @@ Although many travel apps exist that allow you to create an itinerary for upcomi
 4) Internet acess is required to load the country details. 
 
 ## Demo
+<img width="100" height="100" src=![home](home.jpeg)>
 ![home](home.jpeg)
 ![map](map.jpeg)
 ![journal](journal.jpeg)
